@@ -1,41 +1,39 @@
-import java.util.ArrayList;
-feature/UC2-AddBogie
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
 
+public class UseCase3TrainBogieManager {
 
-public class UseCase2PassengerBogies {
     public static void main(String[] args) {
-        ArrayList<String> passengerBogies = new ArrayList<String>();
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("==============================================");
-        System.out.println("=== Train Consist Management App - UC2 =======");
-        System.out.println("==============================================");
+        // HashSet to store unique bogie IDs
+        Set<String> bogieSet = new HashSet<>();
 
-        passengerBogies.add("Sleeper");
-        passengerBogies.add("AC Chair");
-        passengerBogies.add("First Class");
+        System.out.println("Enter number of bogie IDs to add:");
+        int n = scanner.nextInt();
+        scanner.nextLine(); // consume newline
 
-        System.out.println("Passenger bogies after insertion: " + passengerBogies);
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter Bogie ID: ");
+            String bogieId = scanner.nextLine();
 
-        passengerBogies.remove("AC Chair");
-        System.out.println("Passenger bogies after removing AC Chair: " + passengerBogies);
+            // Try to add bogie ID
+            boolean isAdded = bogieSet.add(bogieId);
 
-        boolean isSleeperAvailable = passengerBogies.contains("Sleeper");
-        System.out.println("Does Sleeper bogie exist? " + isSleeperAvailable);
+            if (isAdded) {
+                System.out.println("Bogie ID added successfully.");
+            } else {
+                System.out.println("Duplicate Bogie ID! Ignored.");
+            }
+        }
 
-        System.out.println("Final passenger bogie list: " + passengerBogies);
+        // Display unique bogie IDs
+        System.out.println("\nUnique Bogie IDs:");
+        for (String id : bogieSet) {
+            System.out.println(id);
+        }
 
-import java.util.List;
-
-public class TrainApp {
-    public static void main(String[] args) {
-        List<String> trainConsist = new ArrayList<>();
-
-        System.out.println("====================================");
-        System.out.println("=== Train Consist Management App ===");
-        System.out.println("====================================");
-        System.out.println("Train consist initialized successfully.");
-        System.out.println("Initial bogie count: " + trainConsist.size());
-        main
-        System.out.println("Program continues...");
+        scanner.close();
     }
 }
